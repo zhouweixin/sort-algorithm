@@ -136,6 +136,52 @@ public void merge(int[] a, int l, int mid, int r) {
 }
 ```
 
+## 5.3.归并排序(链表，快慢指针)
+```java
+public ListNode sortList(ListNode head) {
+    if(head == null || head.next == null){
+        return head;
+    }
+
+    // 快慢指针求中间节点，合并
+    ListNode p1 = head;
+    ListNode p2 = head.next;
+    while(p2 != null && p2.next != null){
+        p1 = p1.next; // 慢指针一次走1步，结束时p1即为中点
+        p2 = p2.next.next; // 快指针一次走2步
+    }
+    ListNode right = sortList(p1.next);
+    p1.next = null;
+    ListNode left = sortList(head);
+    return merge(left, right);
+}
+
+public ListNode merge(ListNode left, ListNode right){
+    ListNode h = left;
+    ListNode pre = null; // 前一个节点
+    while(left != null && right != null){
+        if(right.val < left.val){
+            if(pre == null){
+                pre = right;
+                h = right;
+            } else {
+                pre.next = right;
+                pre = right;
+            }
+            right = right.next;
+            pre.next = left;
+        } else {
+            pre = left;
+            left = left.next;
+        }
+    }
+    if(left == null){
+        pre.next = right;
+    }
+    return h;
+}
+```
+
 ## 6.快速排序
 ```java
 public void quickSort(int[] a, int l, int r) {
