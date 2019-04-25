@@ -1,5 +1,17 @@
 # 常用排序算法的java实现
 
+## 0.目录
+- 1、冒泡排序
+- 2、选择排序
+- 3、插入排序
+- 4、希尔排序
+- 5.1、归并排序(递归)
+- 5.2、归并排序(非递归)
+- 5.3、归并排序(链表, 快慢指针)
+- 6、快速排序
+- 7、堆排序
+- 8、计数排序
+
 ## 1.冒泡排序
 ```java
 public void bubbleSort(int[] a) {
@@ -136,7 +148,7 @@ public void merge(int[] a, int l, int mid, int r) {
 }
 ```
 
-## 5.3.归并排序(链表，快慢指针)
+## 5.3.归并排序(链表, 快慢指针)
 ```java
 public ListNode sortList(ListNode head) {
     if(head == null || head.next == null){
